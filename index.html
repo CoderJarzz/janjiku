@@ -1,0 +1,241 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a001f);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Background glow */
+body::before {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: #ff4d6d;
+    filter: blur(150px);
+    top: -100px;
+    left: -100px;
+    opacity: 0.4;
+}
+
+/* Container */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Glass card */
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255, 77, 109, 0.3);
+    max-width: 600px;
+}
+
+/* Button */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #ff4d6d;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Promise animation */
+.promise {
+    margin: 15px 0;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.closing {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #ff9bb3;
+}
+
+/* LOVE FLOATING */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    color: #ff4d6d;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* FLOATING TEXT */
+.floating-text {
+    position: fixed;
+    color: #ff9bb3;
+    font-size: 14px;
+    opacity: 0.5;
+    animation: floatText 10s linear infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(100vh); opacity: 0; }
+    20% { opacity: 0.6; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HALAMAN AWAL -->
+<div class="container" id="start">
+    <div class="card">
+        <h1>Untuk Wanita Yang Akuu Sayangi ❤️</h1>
+        <p>Aku punya sesuatu yang ingin aku sampaikan...</p>
+        <button onclick="start()">Pencet inii sayangg</button>
+    </div>
+</div>
+
+<!-- ISI JANJI -->
+<div class="container hidden" id="content">
+    <div class="card">
+        <h1>Janji Aku</h1>
+
+        <div class="promise">Aku janji akan selalu ada buat kamu.</div>
+        <div class="promise">Aku janji akan berusaha jadi yang terbaik untuk kamu.</div>
+        <div class="promise">Aku janji akan jaga perasaan kamu.</div>
+        <div class="promise">Aku janji gak akan nyakitin kamu dengan sengaja.</div>
+        <div class="promise">Aku janji akan setia sama kamu ❤️</div>
+
+        <div class="promise closing">
+            Tapi aku juga punya harapan untuk kita berdua...
+        </div>
+
+        <div class="promise">
+            Aku ingin kita sama-sama saling jujur, tanpa ada yang disembunyikan.
+        </div>
+
+        <div class="promise">
+            Sekecil apapun itu, aku ingin kita tetap terbuka satu sama lain.
+        </div>
+
+        <div class="promise">
+            Karena buat aku, kepercayaan itu hal paling penting.
+        </div>
+
+        <div class="promise">
+            Aku ingin kita sama-sama menghargai hal sekecil apapun, karena hal kecil pun bisa berarti besar.
+        </div>
+
+        <div class="promise">
+            Jangan pernah menganggap sesuatu itu sepele, apalagi kalau itu menyangkut perasaan kita.
+        </div>
+
+        <div class="promise">
+            Aku juga berharap kita bisa menjaga satu sama lain dengan sungguh-sungguh, tanpa ada hal yang disembunyikan.
+        </div>
+
+        <div class="promise">
+            Karena dalam hubungan ini, aku ingin semuanya dijalani dengan jujur, tanpa ada yang diam-diam melukai.
+        </div>
+
+        <div class="promise">
+            Aku percaya kamu, dan aku harap kita sama-sama bisa menjaga kepercayaan ini.
+        </div>
+
+        <div class="promise closing">
+            Kita jalanin ini sama-sama ya ❤️
+        </div>
+
+    </div>
+</div>
+
+<script>
+function start() {
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+
+    let promises = document.querySelectorAll(".promise");
+
+    promises.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add("show");
+        }, index * 1400);
+    });
+}
+
+/* HEART GENERATOR */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+/* FLOATING TEXT */
+const texts = ["I Love u tata", "I Love u tata", "I Love u tata", "I Love u tata", "I Love u tata ❤️"];
+
+setInterval(() => {
+    let text = document.createElement("div");
+    text.classList.add("floating-text");
+    text.innerText = texts[Math.floor(Math.random() * texts.length)];
+
+    text.style.left = Math.random() * 100 + "vw";
+
+    document.body.appendChild(text);
+
+    setTimeout(() => text.remove(), 10000);
+}, 2000);
+</script>
+
+</body>
+</html>
+```
